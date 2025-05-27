@@ -1,0 +1,14 @@
+# Editor
+.idea/
+.vscode/
+.cursor
+
+# Package Files
+*.jar
+node_modules/
+
+# Dist Files
+dist/
+
+# Demo app
+test-app/

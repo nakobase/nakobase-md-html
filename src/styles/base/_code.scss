@@ -1,0 +1,91 @@
+@use '../mixins' as *;
+
+// Variables
+$code-font-family:
+  'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono',
+  Menlo, 'Cascadia Code', 'Source Code Pro', monospace, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+$code-block-filename-bg: var(--primary);
+$code-block-filename-color: var(--primary-foreground);
+
+@mixin code {
+  // Inline code styles
+  code {
+    padding: 0.2em 0.4em;
+    background: var(--secondary);
+    font-size: 0.85em;
+    border-radius: var(--rounded-xs);
+    vertical-align: 0.08em;
+  }
+
+  // Font family for code elements
+  code,
+  .code-filename {
+    font-family: $code-font-family;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  // Code container
+  .code-container {
+    position: relative;
+    margin: 1.3rem 0;
+  }
+
+  // Code filename
+  .code-filename {
+    display: table;
+    max-width: 100%;
+    background: $code-block-filename-bg;
+    color: $code-block-filename-color;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
+    padding: 6px 12px 20px;
+    margin-bottom: -24px;
+  }
+
+  // Code filename container
+  .code-filename-container + pre {
+    border-top-left-radius: 0;
+  }
+
+  // Pre element styles
+  pre {
+    margin: 1.3rem 0;
+    background: var(--primary);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--rounded-md);
+    word-break: normal;
+    word-wrap: normal;
+    display: flex;
+
+    &:after {
+      content: '';
+      width: 8px;
+      flex-shrink: 0;
+    }
+
+    // Code inside pre
+    code {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      font-size: 0.9em;
+    }
+
+    // Direct code child
+    & > code {
+      display: block;
+      padding: 1.1rem;
+    }
+  }
+}
+
+// Media queries
+@include mq(sm) {
+  pre > code {
+    padding: 1rem 0.8rem;
+    font-size: 0.85em;
+  }
+}

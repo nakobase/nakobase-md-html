@@ -1,0 +1,73 @@
+@use '../mixins' as *;
+
+// Variables
+$list-margin: 1.4rem;
+$list-item-margin: 0.4rem;
+$nested-list-margin: 0.2em;
+$ul-padding-left: 1.8em;
+$ol-padding-left: 1.7em;
+$task-list-margin-left: -1.5em;
+
+@mixin lists {
+  // Common styles for both ul and ol
+  ul,
+  ol {
+    margin: $list-margin 0;
+    line-height: 1.6;
+
+    & > li {
+      margin: $list-item-margin 0;
+    }
+
+    // Nested lists
+    ul,
+    ol {
+      margin: $nested-list-margin 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Unordered lists
+  ul {
+    padding-left: $ul-padding-left;
+
+    & > li {
+      list-style: disc;
+
+      &::marker {
+        font-size: 1.1em;
+      }
+    }
+  }
+
+  // Ordered lists
+  ol {
+    padding-left: $ol-padding-left;
+
+    & > li {
+      list-style: decimal;
+      padding-left: 0.2em;
+
+      &::marker {
+        font-weight: 600;
+        letter-spacing: -0.05em;
+      }
+    }
+  }
+
+  // Task lists
+  .contains-task-list {
+    .task-list-item {
+      list-style: none;
+    }
+  }
+
+  .task-list-item-checkbox {
+    margin-left: $task-list-margin-left;
+    font-size: 1em;
+    pointer-events: none;
+  }
+}

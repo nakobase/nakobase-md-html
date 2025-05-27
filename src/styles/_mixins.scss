@@ -1,0 +1,21 @@
+@use 'sass:map';
+
+// Breakpoints
+$breakpoints: (
+  'xs': 374px,
+  'sm': 576px,
+  'md': 768px,
+);
+
+// Media query mixins
+@mixin mq($size, $type: 'max') {
+  @if $type == 'max' {
+    @media screen and (max-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  } @else if $type == 'min' {
+    @media screen and (min-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  }
+}

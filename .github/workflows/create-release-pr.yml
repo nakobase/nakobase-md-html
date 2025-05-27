@@ -1,0 +1,38 @@
+name: RELEASE - Create a release PR
+
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Ruby 3.1
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+
+      - name: Setup vars
+        run: |
+          echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+          echo "branch_prefix=$(echo ${GITHUB_REF} | cut -d '/' -f 3)" >> $GITHUB_ENV
+
+      - name: Create a release PR
+        env:
+          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+          GIT_PR_RELEASE_BRANCH_STAGING: ${{ env.branch_name }}
+          GIT_PR_RELEASE_TITLE: '【RELEASE】'
+          GIT_PR_RELEASE_TEMPLATE: .pr-release-template
+        run: |
+          gem install -N git-pr-release -v "2.2.0"
+          gem install octokit -v 4.25.1
+          git-pr-release --no-fetch --squashed

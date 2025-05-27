@@ -1,0 +1,107 @@
+@use '../mixins' as *;
+@use 'sass:map';
+
+// Typography variables
+$heading-margin-top: 1.9em;
+$heading-margin-bottom: 0.3em;
+$heading-padding-bottom: 0.1em;
+$heading-border-bottom: solid 1px var(--border);
+
+$font-sizes: (
+  h1: (
+    default: 1.7em,
+    sm: 1.6em,
+  ),
+  h2: (
+    default: 1.5em,
+    sm: 1.4em,
+  ),
+  h3: (
+    default: 1.3em,
+    sm: 1.2em,
+  ),
+  h4: (
+    default: 1.1em,
+    sm: 1.1em,
+  ),
+  h5: (
+    default: 1em,
+    sm: 1em,
+  ),
+  h6: (
+    default: 0.9em,
+    sm: 0.85em,
+  ),
+);
+
+@mixin typography {
+  // Basic text styles
+  i,
+  cite,
+  em,
+  var {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  a {
+    color: var(--link);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p + p {
+    margin-top: 1.2em;
+  }
+
+  // Heading styles
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    & + p {
+      margin-top: 0.2em;
+    }
+  }
+
+  // Large headings (h1, h2)
+  h1,
+  h2 {
+    margin-top: $heading-margin-top;
+    margin-bottom: $heading-margin-bottom;
+    padding-bottom: $heading-padding-bottom;
+    border-bottom: $heading-border-bottom;
+  }
+
+  // Small headings (h3-h6)
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.8em;
+    margin-bottom: $heading-margin-bottom;
+  }
+
+  // Font sizes
+  @each $heading, $sizes in $font-sizes {
+    #{$heading} {
+      font-size: map.get($sizes, default);
+    }
+  }
+
+  // Responsive font sizes
+  @include mq(sm) {
+    @each $heading, $sizes in $font-sizes {
+      #{$heading} {
+        font-size: map.get($sizes, sm);
+      }
+    }
+  }
+}

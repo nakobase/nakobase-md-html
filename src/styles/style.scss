@@ -1,0 +1,141 @@
+@use './mixins' as *;
+@use './base/typography' as *;
+@use './base/lists' as *;
+@use './base/code' as *;
+@use './base/tables' as *;
+@use './base/media' as *;
+@use './base/components' as *;
+@use './base/custom-containers' as *;
+@use 'sass:map';
+
+@mixin base-styles {
+  @include typography;
+  @include lists;
+  @include code;
+  @include tables;
+  @include media;
+  @include components;
+}
+
+// Color variables
+$colors: (
+  'background': (
+    'light': oklch(1 0 0),
+    'dark': oklch(0.141 0.005 285.823),
+  ),
+  'foreground': (
+    'light': oklch(0.141 0.005 285.823),
+    'dark': oklch(0.985 0 0),
+  ),
+  'primary': (
+    'light': oklch(0.21 0.006 285.885),
+    'dark': oklch(0.92 0.004 286.32),
+  ),
+  'primary-foreground': (
+    'light': oklch(0.985 0 0),
+    'dark': oklch(0.21 0.006 285.885),
+  ),
+  'secondary': (
+    'light': oklch(0.967 0.001 286.375),
+    'dark': oklch(0.274 0.006 286.033),
+  ),
+  'secondary-foreground': (
+    'light': oklch(0.21 0.006 285.885),
+    'dark': oklch(0.985 0 0),
+  ),
+  'muted': (
+    'light': oklch(0.967 0.001 286.375),
+    'dark': oklch(0.274 0.006 286.033),
+  ),
+  'muted-foreground': (
+    'light': oklch(0.552 0.016 285.938),
+    'dark': oklch(0.705 0.015 286.067),
+  ),
+  'accent': (
+    'light': oklch(0.967 0.001 286.375),
+    'dark': oklch(0.274 0.006 286.033),
+  ),
+  'accent-foreground': (
+    'light': oklch(0.21 0.006 285.885),
+    'dark': oklch(0.985 0 0),
+  ),
+  'destructive': (
+    'light': oklch(0.577 0.245 27.325),
+    'dark': oklch(0.704 0.191 22.216),
+  ),
+  'border': (
+    'light': oklch(0.92 0.004 286.32),
+    'dark': oklch(1 0 0 / 10%),
+  ),
+  'input': (
+    'light': oklch(0.92 0.004 286.32),
+    'dark': oklch(1 0 0 / 15%),
+  ),
+  'ring': (
+    'light': oklch(0.705 0.015 286.067),
+    'dark': oklch(0.552 0.016 285.938),
+  ),
+  'link': (
+    'light': oklch(0.452 0.313214 264.052),
+    'dark': oklch(0.452 0.313214 264.052),
+  ),
+  'warning': (
+    'light': oklch(0.9754 0.025552 84.593),
+    'dark': oklch(0.9754 0.025552 84.593),
+  ),
+  'warning-foreground': (
+    'light': oklch(0.8304 0.1459 74.36),
+    'dark': oklch(0.8304 0.1459 74.36),
+  ),
+  'danger': (
+    'light': oklch(0.9656 0.0177 4.51),
+    'dark': oklch(0.9656 0.0177 4.51),
+  ),
+  'danger-foreground': (
+    'light': oklch(0.7271 0.1684 24.66),
+    'dark': oklch(0.7271 0.1684 24.66),
+  ),
+);
+
+// Border radius variables
+$border-radius: (
+  'xs': 4px,
+  'sm': 7px,
+  'md': 10px,
+  'lg': 14px,
+  'full': 99rem,
+);
+
+.nbcontent {
+  // Light theme variables
+  @each $name, $value in $colors {
+    --#{$name}: #{map.get($value, 'light')};
+  }
+
+  // Border radius variables
+  @each $name, $value in $border-radius {
+    --rounded-#{$name}: #{$value};
+  }
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  line-height: 1.8;
+  background-color: var(--background);
+  color: var(--foreground);
+
+  @include base-styles;
+}
+
+.dark .nbcontent {
+  // Dark theme variables
+  @each $name, $value in $colors {
+    --#{$name}: #{map.get($value, 'dark')};
+  }
+
+  // Border radius variables (same as light theme)
+  @each $name, $value in $border-radius {
+    --rounded-#{$name}: #{$value};
+  }
+}
