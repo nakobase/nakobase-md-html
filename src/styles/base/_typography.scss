@@ -3,7 +3,8 @@
 
 // Typography variables
 $heading-margin-top: 1.9em;
-$heading-margin-bottom: 0.3em;
+$large-heading-margin-bottom: 1rem;
+$heading-margin-bottom: 0.4em;
 $heading-padding-bottom: 0.1em;
 $heading-border-bottom: solid 1px var(--border);
 
@@ -75,7 +76,7 @@ $font-sizes: (
   h1,
   h2 {
     margin-top: $heading-margin-top;
-    margin-bottom: $heading-margin-bottom;
+    margin-bottom: $large-heading-margin-bottom;
     padding-bottom: $heading-padding-bottom;
     border-bottom: $heading-border-bottom;
   }
