@@ -6,6 +6,7 @@
 @use './base/media' as *;
 @use './base/components' as *;
 @use './base/custom-containers' as *;
+@use './base/custom-blocks' as *;
 @use 'sass:map';
 
 @mixin base-styles {
