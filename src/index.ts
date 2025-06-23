@@ -2,7 +2,12 @@
 import { MdToHtmlOptions } from './types';
 import MarkdownIt from 'markdown-it';
 import { sanitize } from './sanitizer';
-import { boxOptions, detailsOptions } from './utils/md-container';
+import {
+  boxOptions,
+  bubbleImageOptions,
+  bubbleOptions,
+  detailsOptions,
+} from './utils/md-container';
 import { mdRendererFence } from './utils/md-renderer-fence';
 import { mdCustomBlocks } from './utils/md-custom-blocks';
 import { CONTAINER_TYPES } from './constants';
@@ -37,6 +42,8 @@ export const mdToHtml = (
     .use(MdItTaskLists, { enabled: true })
     .use(MdItContainer, CONTAINER_TYPES.DETAILS, detailsOptions)
     .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
+    .use(MdItContainer, CONTAINER_TYPES.BUBBLE, bubbleOptions)
+    .use(MdItContainer, CONTAINER_TYPES.BUBBLE_IMAGE, bubbleImageOptions)
     .use(mdCustomBlocks);
 
   if (codeHighlight) {
