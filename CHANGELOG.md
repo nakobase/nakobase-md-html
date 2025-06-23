@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/nakobase/nakobase-md-html/compare/v1.1.0...v1.2.0) (2025-06-23)
+
+
+### Features
+
+* handle webp ([8423cb1](https://github.com/nakobase/nakobase-md-html/commit/8423cb169ab0a5c4e1d01d51d5df07f42fe25948))
+
 # [1.1.0](https://github.com/nakobase/nakobase-md-html/compare/v1.0.1...v1.1.0) (2025-06-23)
 
 
