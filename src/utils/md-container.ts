@@ -24,6 +24,78 @@ export const detailsOptions = {
   },
 };
 
+// Bubble
+// ::: bubble alt="alt" src="src" width="100" height="100" pos="left"
+// markdown
+// :::
+export const bubbleOptions = {
+  validate: function (params: string) {
+    return /^bubble(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
+  },
+  render: function (tokens: Token[], idx: number) {
+    const isOpeningTag = tokens[idx].nesting === 1;
+    if (isOpeningTag) {
+      const info = tokens[idx].info.trim().replace(/^bubble\s*/, '');
+      const regex = /(\w+)="([^"]*)"/g;
+      const attrs: Record<string, string> = {};
+      let m: RegExpExecArray | null;
+      while ((m = regex.exec(info)) !== null) {
+        attrs[m[1]] = m[2];
+      }
+      const {
+        src = '',
+        alt = '',
+        width = '100',
+        height = '100',
+        pos = 'left',
+      } = attrs;
+
+      return (
+        `<div class="bubble ${pos}">` +
+        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
+        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">` +
+        `<div class="bubble-content">`
+      );
+    } else {
+      return `</div></div>\n`;
+    }
+  },
+};
+
+// BubbleImage
+// ::: bubbleImage alt="alt" src="src" width="100" height="100" pos="left"
+// markdown
+// :::
+export const bubbleImageOptions = {
+  validate: function (params: string) {
+    return /^bubbleImage(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
+  },
+  render: function (tokens: Token[], idx: number) {
+    const isOpeningTag = tokens[idx].nesting === 1;
+    if (isOpeningTag) {
+      const info = tokens[idx].info.trim().replace(/^bubbleImage\s*/, '');
+      const regex = /(\w+)="([^"]*)"/g;
+      const attrs: Record<string, string> = {};
+      let m: RegExpExecArray | null;
+      while ((m = regex.exec(info)) !== null) {
+        attrs[m[1]] = m[2];
+      }
+      const { src = '', alt = '', width = '640', height = '360' } = attrs;
+
+      return (
+        `<div class="bubble-image">` +
+        `<div class="bubble-image-wrapper">` +
+        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
+        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">` +
+        `</div>` +
+        `<div class="bubble-image-content">`
+      );
+    } else {
+      return `</div></div>\n`;
+    }
+  },
+};
+
 // Box
 // ::: box1 title
 // markdown
