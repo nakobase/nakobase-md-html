@@ -25,7 +25,7 @@ export const detailsOptions = {
 };
 
 // Bubble
-// ::: bubble alt="alt" src="src" width="100" height="100" pos="left"
+// ::: bubble alt="alt" src="src" webp="src.webp" width="100" height="100" pos="left"
 // markdown
 // :::
 export const bubbleOptions = {
@@ -48,12 +48,27 @@ export const bubbleOptions = {
         width = '100',
         height = '100',
         pos = 'left',
+        webp = '',
       } = attrs;
+
+      const imgHtml =
+        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
+        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">`;
+
+      let imageElement: string;
+      if (webp) {
+        imageElement =
+          '<picture>' +
+          `<source srcset="${escapeHtml(webp)}" type="image/webp">` +
+          imgHtml +
+          '</picture>';
+      } else {
+        imageElement = imgHtml;
+      }
 
       return (
         `<div class="bubble ${pos}">` +
-        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
-        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">` +
+        imageElement +
         `<div class="bubble-content">`
       );
     } else {
@@ -63,30 +78,50 @@ export const bubbleOptions = {
 };
 
 // BubbleImage
-// ::: bubbleImage alt="alt" src="src" width="100" height="100" pos="left"
+// ::: bubble-image alt="alt" src="src" webp="src.webp" width="640" height="360"
 // markdown
 // :::
 export const bubbleImageOptions = {
   validate: function (params: string) {
-    return /^bubbleImage(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
+    return /^bubble-image(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
   },
   render: function (tokens: Token[], idx: number) {
     const isOpeningTag = tokens[idx].nesting === 1;
     if (isOpeningTag) {
-      const info = tokens[idx].info.trim().replace(/^bubbleImage\s*/, '');
+      const info = tokens[idx].info.trim().replace(/^bubble-image\s*/, '');
       const regex = /(\w+)="([^"]*)"/g;
       const attrs: Record<string, string> = {};
       let m: RegExpExecArray | null;
       while ((m = regex.exec(info)) !== null) {
         attrs[m[1]] = m[2];
       }
-      const { src = '', alt = '', width = '640', height = '360' } = attrs;
+      const {
+        src = '',
+        alt = '',
+        width = '640',
+        height = '360',
+        webp = '',
+      } = attrs;
+
+      const imgHtml =
+        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
+        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">`;
+
+      let imageElement: string;
+      if (webp) {
+        imageElement =
+          '<picture>' +
+          `<source srcset="${escapeHtml(webp)}" type="image/webp">` +
+          imgHtml +
+          '</picture>';
+      } else {
+        imageElement = imgHtml;
+      }
 
       return (
         `<div class="bubble-image">` +
         `<div class="bubble-image-wrapper">` +
-        `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ` +
-        `width="${escapeHtml(width)}" height="${escapeHtml(height)}">` +
+        imageElement +
         `</div>` +
         `<div class="bubble-image-content">`
       );

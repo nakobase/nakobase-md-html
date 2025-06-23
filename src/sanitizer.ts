@@ -11,12 +11,16 @@ const extendedTags = [
   'input',
   'pre',
   'span',
+  'picture',
+  'source',
 ];
 
 const extendedAttributes = {
   a: [...(defaults.allowedAttributes.a || []), 'id', 'class', 'data-line'],
   iframe: ['src', 'width', 'height', 'allow', 'sandbox', 'frameborder'],
   input: ['type', 'checked', 'disabled', 'readonly', 'value', 'class'],
+  source: ['srcset', 'type'],
+  img: ['src', 'alt', 'width', 'height'],
   ul: ['class'],
   ol: ['class'],
   li: ['class'],
@@ -46,13 +50,6 @@ export const sanitize = (html: string): string =>
         height: [/^\d+(?:px|%)$/],
         'text-align': [/^(?:left|right|center|justify)$/],
       },
-    },
-
-    transformTags: {
-      a: sanitizeHtml.simpleTransform('a', {
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      }),
     },
 
     disallowedTagsMode: 'discard',
