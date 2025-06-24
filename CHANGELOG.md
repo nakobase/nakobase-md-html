@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/nakobase/nakobase-md-html/compare/v1.2.1...v1.2.2) (2025-06-24)
+
+
+### Bug Fixes
+
+* build structure ([fd5bdb2](https://github.com/nakobase/nakobase-md-html/commit/fd5bdb22d6de6b602a47b3f1d31b5adeaa539479))
+
 ## [1.2.1](https://github.com/nakobase/nakobase-md-html/compare/v1.2.0...v1.2.1) (2025-06-24)
 
 
