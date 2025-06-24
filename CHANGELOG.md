@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/nakobase/nakobase-md-html/compare/v1.2.2...v1.2.3) (2025-06-24)
+
+
+### Bug Fixes
+
+* esm to cjs ([a78e946](https://github.com/nakobase/nakobase-md-html/commit/a78e9462a819fec3d386877fb3a2f4dd379df4cf))
+
 ## [1.2.2](https://github.com/nakobase/nakobase-md-html/compare/v1.2.1...v1.2.2) (2025-06-24)
 
 
