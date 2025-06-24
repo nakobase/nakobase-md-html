@@ -1,4 +1,4 @@
 /node_modules
 /src
-tsconfig.esm.json
+tsconfig.build.json
 .github
