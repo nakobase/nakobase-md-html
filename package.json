@@ -2,7 +2,6 @@
   "name": "@nakobase/nakobase-md-html",
   "version": "1.0.0",
   "description": "Convert Markdown to **sanitized HTML** and apply consistent styles – simple, secure, and styled.",
-  "type": "module",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "bin": "./dist/esm/index.js",
@@ -92,6 +91,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@steelydylan/markdown-it-imsize": "^1.0.2",
     "markdown-it": "^12.3.2",
     "markdown-it-container": "^2.0.0",
     "markdown-it-custom-block": "^1.0.0",
