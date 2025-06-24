@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/nakobase/nakobase-md-html/compare/v1.2.0...v1.2.1) (2025-06-24)
+
+
+### Bug Fixes
+
+* remove markdown-it-imsize ([1c5dbf5](https://github.com/nakobase/nakobase-md-html/commit/1c5dbf55372efb18af67aa74d1d2ddfd01f7290c))
+
 # [1.2.0](https://github.com/nakobase/nakobase-md-html/compare/v1.1.0...v1.2.0) (2025-06-23)
 
 
