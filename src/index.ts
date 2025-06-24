@@ -13,7 +13,6 @@ import { mdCustomBlocks } from './utils/md-custom-blocks';
 import { CONTAINER_TYPES } from './constants';
 
 // plugins
-const MdItImSize = require('@steelydylan/markdown-it-imsize').default;
 const MdItInlineComments = require('markdown-it-inline-comments');
 const MdItContainer = require('markdown-it-container');
 const MdItTaskLists = require('markdown-it-task-lists');
@@ -38,7 +37,6 @@ export const mdToHtml = (
   });
 
   md.use(MdItInlineComments)
-    .use(MdItImSize)
     .use(MdItTaskLists, { enabled: true })
     .use(MdItContainer, CONTAINER_TYPES.DETAILS, detailsOptions)
     .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
