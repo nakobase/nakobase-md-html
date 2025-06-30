@@ -328,6 +328,10 @@
       padding: 1rem;
       background-color: var(--warning);
 
+      .dark & {
+        color: var(--background);
+      }
+
       .msg-container {
         display: flex;
         flex-direction: row;
@@ -373,6 +377,10 @@
       border-radius: var(--rounded-sm);
       padding: 1rem;
       background-color: var(--danger);
+
+      .dark & {
+        color: var(--background);
+      }
 
       .msg-container {
         display: flex;
