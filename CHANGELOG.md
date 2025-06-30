@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/nakobase/nakobase-md-html/compare/v1.2.3...v1.2.4) (2025-06-30)
+
+
+### Bug Fixes
+
+* style of box5 and box6 ([fe439c0](https://github.com/nakobase/nakobase-md-html/commit/fe439c0f74927f99b587257b7943b1bb5471e22f))
+
 ## [1.2.3](https://github.com/nakobase/nakobase-md-html/compare/v1.2.2...v1.2.3) (2025-06-24)
 
 
