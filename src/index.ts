@@ -10,6 +10,7 @@ import {
 } from './utils/md-container';
 import { mdRendererFence } from './utils/md-renderer-fence';
 import { mdCustomBlocks } from './utils/md-custom-blocks';
+import { mdCustomInlines } from './utils/md-custom-inlines';
 import { CONTAINER_TYPES } from './constants';
 
 // plugins
@@ -44,7 +45,8 @@ export const mdToHtml = (
     .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
     .use(MdItContainer, CONTAINER_TYPES.BUBBLE, bubbleOptions)
     .use(MdItContainer, CONTAINER_TYPES.BUBBLE_IMAGE, bubbleImageOptions)
-    .use(mdCustomBlocks);
+    .use(mdCustomBlocks)
+    .use(mdCustomInlines);
 
   if (codeHighlight) {
     md.use(mdRendererFence);

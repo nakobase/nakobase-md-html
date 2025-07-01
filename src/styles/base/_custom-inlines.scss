@@ -1,0 +1,36 @@
+@mixin custom-inlines {
+  // Highlight
+  .highlight {
+    background: linear-gradient(transparent 60%, #fef08a 40%);
+    padding: 0 2px;
+    border-radius: 2px;
+
+    .dark & {
+      background: linear-gradient(transparent 60%, #ca8a04 40%);
+    }
+
+    &.highlight-red {
+      background: linear-gradient(transparent 60%, #fecaca 40%);
+
+      .dark & {
+        background: linear-gradient(transparent 60%, #dc2626 40%);
+      }
+    }
+
+    &.highlight-green {
+      background: linear-gradient(transparent 60%, #bbf7d0 40%);
+
+      .dark & {
+        background: linear-gradient(transparent 60%, #16a34a 40%);
+      }
+    }
+
+    &.highlight-blue {
+      background: linear-gradient(transparent 60%, #bfdbfe 40%);
+
+      .dark & {
+        background: linear-gradient(transparent 60%, #2563eb 40%);
+      }
+    }
+  }
+}
