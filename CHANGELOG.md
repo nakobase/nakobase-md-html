@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/nakobase/nakobase-md-html/compare/v1.2.4...v1.2.5) (2025-07-01)
+
+
+### Bug Fixes
+
+* code color ([23ab552](https://github.com/nakobase/nakobase-md-html/commit/23ab55289be3cd15fb7f5465d22d65598b62ced2))
+
 ## [1.2.4](https://github.com/nakobase/nakobase-md-html/compare/v1.2.3...v1.2.4) (2025-06-30)
 
 
