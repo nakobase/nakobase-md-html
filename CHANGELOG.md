@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/nakobase/nakobase-md-html/compare/v1.2.5...v1.3.0) (2025-07-01)
+
+
+### Features
+
+* add hightlight ([033261f](https://github.com/nakobase/nakobase-md-html/commit/033261f43f2769e02b5cc30c4d0b1089c09dadfb))
+
 ## [1.2.5](https://github.com/nakobase/nakobase-md-html/compare/v1.2.4...v1.2.5) (2025-07-01)
 
 
