@@ -53,10 +53,11 @@
     margin: 1rem 0;
 
     img {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       border: 2px solid var(--border);
+      padding: 0.2rem;
     }
 
     .bubble-content {
@@ -115,14 +116,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin: 1rem 0;
-
-    .bubble-image-wrapper,
-    .bubble-image-content {
-      flex-basis: 50%;
-    }
+    margin: 1.5rem 0;
 
     .bubble-image-wrapper {
+      flex-basis: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -138,6 +135,7 @@
     }
 
     .bubble-image-content {
+      flex-basis: 60%;
       position: relative;
       width: 100%;
       padding: 0.5rem 0.8rem;
@@ -189,7 +187,7 @@
   // contents
   // :::
   .box {
-    margin: 1.2rem 0;
+    margin: 1.5rem 0;
 
     &.box1 {
       position: relative;
@@ -419,6 +417,42 @@
           height: 8px;
           bottom: 2px;
         }
+      }
+    }
+  }
+
+  // Heading
+  // ::: heading1
+  // markdown
+  // :::
+  .heading {
+    margin: 1.5rem 0;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    &.heading1 {
+      display: inline-block;
+      position: relative;
+      padding-left: 1.5rem;
+      font-weight: bold;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 17px;
+        height: 28px;
+        color: var(--primary);
+        background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221.25em%22%20viewBox%3D%220%200%20448%20512%22%3E%3Cstyle%3Esvg%7Bfill%3A%235ab9ff%7D%3C%2Fstyle%3E%3Cpath%20d%3D%22M438.6%20105.4c12.5%2012.5%2012.5%2032.8%200%2045.3l-256%20256c-12.5%2012.5-32.8%2012.5-45.3%200l-128-128c-12.5-12.5-12.5-32.8%200-45.3s32.8-12.5%2045.3%200L160%20338.7%20393.4%20105.4c12.5-12.5%2032.8-12.5%2045.3%200z%22%2F%3E%3C%2Fsvg%3E);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        content: '';
       }
     }
   }
