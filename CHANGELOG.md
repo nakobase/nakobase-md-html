@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/nakobase/nakobase-md-html/compare/v1.3.0...v2.0.0) (2025-07-11)
+
+
+### Features
+
+* add rich option ([1c1f977](https://github.com/nakobase/nakobase-md-html/commit/1c1f97788ce206f8bd03ff88ebf55479edf23766))
+* styled separated ([8eec572](https://github.com/nakobase/nakobase-md-html/commit/8eec5726b2af875d9f0a63f129db3ba38e9165fa))
+
+
+### BREAKING CHANGES
+
+* base.css and rich.css instead of style.css
+
 # [1.3.0](https://github.com/nakobase/nakobase-md-html/compare/v1.2.5...v1.3.0) (2025-07-01)
 
 
