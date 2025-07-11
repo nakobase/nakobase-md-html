@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/nakobase/nakobase-md-html/compare/v2.0.0...v2.1.0) (2025-07-11)
+
+
+### Features
+
+* add heading1 ([ce2d2e8](https://github.com/nakobase/nakobase-md-html/commit/ce2d2e841e4dc5fa6bbfb765273700c98562f05f))
+
 # [2.0.0](https://github.com/nakobase/nakobase-md-html/compare/v1.3.0...v2.0.0) (2025-07-11)
 
 
