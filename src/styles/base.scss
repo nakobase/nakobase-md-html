@@ -5,9 +5,6 @@
 @use './base/tables' as *;
 @use './base/media' as *;
 @use './base/components' as *;
-@use './base/custom-containers' as *;
-@use './base/custom-blocks' as *;
-@use './base/custom-inlines' as *;
 @use 'sass:map';
 
 @mixin base-styles {
@@ -17,9 +14,6 @@
   @include tables;
   @include media;
   @include components;
-  @include custom-containers;
-  @include custom-blocks;
-  @include custom-inlines;
 }
 
 // Color variables
