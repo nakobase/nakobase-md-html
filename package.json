@@ -9,8 +9,11 @@
     ".": {
       "import": "./dist/cjs/index.js"
     },
-    "./styles/style.css": {
-      "import": "./dist/styles/style.css"
+    "./styles/base.css": {
+      "import": "./dist/styles/base.css"
+    },
+    "./styles/rich.css": {
+      "import": "./dist/styles/rich.css"
     }
   },
   "files": [
@@ -26,7 +29,7 @@
     "clean": "rimraf dist",
     "build:types": "tsc --project tsconfig.build.json",
     "build:js": "babel src --extensions .ts,.tsx --ignore **/*.d.ts --out-dir dist/cjs",
-    "build:styles": "sass src/styles/style.scss:dist/styles/style.css --no-source-map --style compressed",
+    "build:styles": "sass src/styles/base.scss:dist/styles/base.css --no-source-map --style compressed && sass src/styles/rich.scss:dist/styles/rich.css --no-source-map --style compressed",
     "build": "pnpm run clean && pnpm run build:types && pnpm run build:styles && pnpm run build:js",
     "start": "pnpm run build && node dist/cjs/index.js",
     "test": "jest",

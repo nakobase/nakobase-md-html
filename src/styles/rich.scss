@@ -1,0 +1,9 @@
+@use './base/custom-containers' as *;
+@use './base/custom-blocks' as *;
+@use './base/custom-inlines' as *;
+
+.nbcontent {
+  @include custom-containers;
+  @include custom-blocks;
+  @include custom-inlines;
+}
