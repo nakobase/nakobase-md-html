@@ -28,8 +28,11 @@ const html = mdToHtml(
 
 This is a test of the markdown to html converter.
 `,
-  { codeHighlight: true }
-); // codeHighlight is optional, default is false
+  {
+    codeHighlight: true,  // Enable code highlighting (optional, default is false)
+    rich: true           // Enable rich features like containers and custom blocks (optional, default is false)
+  }
+);
 
 console.log(html);
 ```

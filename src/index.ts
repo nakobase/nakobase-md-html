@@ -23,7 +23,7 @@ export const mdToHtml = (
   markdown: string,
   options?: MdToHtmlOptions
 ): string => {
-  const { codeHighlight } = options || {};
+  const { codeHighlight, rich } = options || {};
   if (!(markdown && markdown.length)) return '';
 
   const md = MarkdownIt({
@@ -40,13 +40,16 @@ export const mdToHtml = (
 
   md.use(MdItInlineComments)
     .use(MdItImSize)
-    .use(MdItTaskLists, { enabled: true })
-    .use(MdItContainer, CONTAINER_TYPES.DETAILS, detailsOptions)
-    .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
-    .use(MdItContainer, CONTAINER_TYPES.BUBBLE, bubbleOptions)
-    .use(MdItContainer, CONTAINER_TYPES.BUBBLE_IMAGE, bubbleImageOptions)
-    .use(mdCustomBlocks)
-    .use(mdCustomInlines);
+    .use(MdItTaskLists, { enabled: true });
+
+  if (rich) {
+    md.use(MdItContainer, CONTAINER_TYPES.DETAILS, detailsOptions)
+      .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
+      .use(MdItContainer, CONTAINER_TYPES.BUBBLE, bubbleOptions)
+      .use(MdItContainer, CONTAINER_TYPES.BUBBLE_IMAGE, bubbleImageOptions)
+      .use(mdCustomBlocks)
+      .use(mdCustomInlines);
+  }
 
   if (codeHighlight) {
     md.use(mdRendererFence);
