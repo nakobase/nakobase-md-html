@@ -45,8 +45,8 @@ export const bubbleOptions = {
       const {
         src = '',
         alt = '',
-        width = '100',
-        height = '100',
+        width = '80',
+        height = '80',
         pos = 'left',
         webp = '',
       } = attrs;
@@ -173,5 +173,37 @@ const boxHtml = (boxType: string, boxTitle: string) => {
       }</div>`;
     default:
       return `<div class="box ${boxType}">${boxTitle ? `<span>${boxTitle}</span>` : ''}`;
+  }
+};
+
+// Heading
+// ::: heading1
+// markdown
+// :::
+export const headingOptions = {
+  validate: function (params: string) {
+    return /^(heading1)$/.test(params.trim());
+  },
+  render: function (tokens: Token[], idx: number) {
+    const isOpeningTag = tokens[idx].nesting === 1;
+
+    if (isOpeningTag) {
+      const m = tokens[idx].info.trim().match(/^(heading1)$/);
+      if (!m) return '';
+
+      const headingType = m[1]; // heading1
+      return headingHtml(headingType);
+    } else {
+      return '</div>\n';
+    }
+  },
+};
+
+const headingHtml = (headingType: string) => {
+  switch (headingType) {
+    case 'heading1':
+      return `<div class="heading ${headingType}">`;
+    default:
+      return `<div class="heading ${headingType}">`;
   }
 };
