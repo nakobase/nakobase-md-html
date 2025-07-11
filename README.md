@@ -37,20 +37,36 @@ This is a test of the markdown to html converter.
 console.log(html);
 ```
 
-### Styles
-
-We have some default styles that are applied to the HTML.
-
-```ts
-import '@nakobase/nakobase-md-html/styles/style.css';
-
-import 'prismjs/themes/prism-okaidia.css'; // or any other prism theme if you want
-```
-
 Add `.nbcontents` to the container of the markdown.
 
 ```html
 <div class="nbcontent">
   <!-- HTML parsed from markdown -->
 </div>
+```
+
+### Styles
+
+We have some default styles that are applied to the HTML.
+
+#### Basic Usage (Performance Focused)
+For simple markdown content, use only the base styles:
+
+```ts
+import '@nakobase/nakobase-md-html/styles/base.css';
+```
+
+#### Rich Features
+For content with custom blocks, containers, and rich features:
+
+```ts
+import '@nakobase/nakobase-md-html/styles/base.css';
+import '@nakobase/nakobase-md-html/styles/rich.css';
+```
+
+### Code Highlighting
+If you want code highlighting, also import a Prism theme:
+
+```ts
+import 'prismjs/themes/prism-okaidia.css'; // or any other prism theme
 ```
