@@ -19,12 +19,13 @@ const MdItImSize = require('@steelydylan/markdown-it-imsize').default;
 const MdItInlineComments = require('markdown-it-inline-comments');
 const MdItContainer = require('markdown-it-container');
 const MdItTaskLists = require('markdown-it-task-lists');
+const MdItAnchor = require('markdown-it-anchor').default;
 
 export const mdToHtml = (
   markdown: string,
   options?: MdToHtmlOptions
 ): string => {
-  const { codeHighlight, rich } = options || {};
+  const { codeHighlight, rich, anchor } = options || {};
   if (!(markdown && markdown.length)) return '';
 
   const md = MarkdownIt({
@@ -42,6 +43,12 @@ export const mdToHtml = (
   md.use(MdItInlineComments)
     .use(MdItImSize)
     .use(MdItTaskLists, { enabled: true });
+
+  if (anchor) {
+    md.use(MdItAnchor, {
+      level: [1, 2, 3, 4, 5, 6],
+    });
+  }
 
   if (rich) {
     md.use(MdItContainer, CONTAINER_TYPES.DETAILS, detailsOptions)
