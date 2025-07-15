@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/nakobase/nakobase-md-html/compare/v2.1.0...v2.2.0) (2025-07-15)
+
+
+### Features
+
+* add anchor opt ([9c854ca](https://github.com/nakobase/nakobase-md-html/commit/9c854ca412af820a02bfb8708797c90321241b87))
+
 # [2.1.0](https://github.com/nakobase/nakobase-md-html/compare/v2.0.0...v2.1.0) (2025-07-11)
 
 
