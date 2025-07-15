@@ -14,6 +14,9 @@ importers:
       markdown-it:
         specifier: ^12.3.2
         version: 12.3.2
+      markdown-it-anchor:
+        specifier: ^9.2.0
+        version: 9.2.0(@types/markdown-it@12.2.3)(markdown-it@12.3.2)
       markdown-it-container:
         specifier: ^2.0.0
         version: 2.0.0
@@ -3871,6 +3874,12 @@ packages:
   map-visit@1.0.0:
     resolution: {integrity: sha512-4y7uGv8bd2WdM9vpQsiQNo41Ln1NvhvDRuVt0k2JZQ+ezN2uaQes7lZeZ+QQUHOLQAtDaBJ+7wCbi+ab/KFs+w==}
     engines: {node: '>=0.10.0'}
+
+  markdown-it-anchor@9.2.0:
+    resolution: {integrity: sha512-sa2ErMQ6kKOA4l31gLGYliFQrMKkqSO0ZJgGhDHKijPf0pNFM9vghjAh3gn26pS4JDRs7Iwa9S36gxm3vgZTzg==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
 
   markdown-it-container@2.0.0:
     resolution: {integrity: sha512-IxPOaq2LzrGuFGyYq80zaorXReh2ZHGFOB1/Hen429EJL1XkPI3FJTpx9TsJeua+j2qTru4h3W1TiCRdeivMmA==}
@@ -9940,6 +9949,11 @@ snapshots:
   map-visit@1.0.0:
     dependencies:
       object-visit: 1.0.1
+
+  markdown-it-anchor@9.2.0(@types/markdown-it@12.2.3)(markdown-it@12.3.2):
+    dependencies:
+      '@types/markdown-it': 12.2.3
+      markdown-it: 12.3.2
 
   markdown-it-container@2.0.0: {}
 

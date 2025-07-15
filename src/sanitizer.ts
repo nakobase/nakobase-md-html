@@ -28,6 +28,12 @@ const extendedAttributes = {
   pre: ['class'],
   code: [...(defaults.allowedAttributes.code || []), 'class'],
   span: ['class'],
+  h1: ['id'],
+  h2: ['id'],
+  h3: ['id'],
+  h4: ['id'],
+  h5: ['id'],
+  h6: ['id'],
 };
 
 export const sanitize = (html: string): string =>
