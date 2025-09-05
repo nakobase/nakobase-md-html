@@ -68,6 +68,10 @@
       background-color: var(--secondary);
       border-radius: 5px;
 
+      p + p {
+        margin-top: 0.4em;
+      }
+
       &::before,
       &::after {
         position: absolute;
@@ -119,13 +123,46 @@
     margin: 1.5rem 0;
 
     .bubble-image-wrapper {
+      overflow: hidden;
       flex-basis: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       max-width: 100%;
       border: 2px solid var(--border);
       border-radius: 5px;
+
+      .browser-header {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        background-color: var(--secondary);
+        width: 100%;
+
+        .controls {
+          display: flex;
+          gap: 0.5rem;
+
+          .control-btn {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+          }
+
+          .control-btn.close {
+            background-color: #ef4444;
+          }
+
+          .control-btn.minimize {
+            background-color: #eab308;
+          }
+
+          .control-btn.maximize {
+            background-color: #22c55e;
+          }
+        }
+      }
 
       img {
         width: 100%;
@@ -142,6 +179,10 @@
       color: var(--foreground);
       background-color: var(--secondary);
       border-radius: 5px;
+
+      p + p {
+        margin-top: 0.4em;
+      }
 
       &::before,
       &::after {
@@ -188,6 +229,10 @@
   // :::
   .box {
     margin: 1.5rem 0;
+
+    p + p {
+      margin-top: 0.4em;
+    }
 
     &.box1 {
       position: relative;
@@ -337,6 +382,7 @@
         gap: 0.3rem;
         color: var(--warning-foreground);
         font-weight: bold;
+        margin-bottom: 0.5rem;
       }
 
       .icon {
@@ -387,6 +433,7 @@
         gap: 0.3rem;
         color: var(--danger-foreground);
         font-weight: bold;
+        margin-bottom: 0.5rem;
       }
 
       .icon {
@@ -434,6 +481,7 @@
     h5,
     h6 {
       margin: 0;
+      font-size: 1em;
     }
 
     &.heading1 {

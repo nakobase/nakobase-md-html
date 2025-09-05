@@ -30,7 +30,8 @@ This is a test of the markdown to html converter.
 `,
   {
     codeHighlight: true,  // Enable code highlighting (optional, default is false)
-    rich: true           // Enable rich features like containers and custom blocks (optional, default is false)
+    rich: true,           // Enable rich features like containers and custom blocks (optional, default is false)
+    anchor: true,         // Enable anchor links (optional, default is false)
   }
 );
 
