@@ -78,7 +78,7 @@ export const bubbleOptions = {
 };
 
 // BubbleImage
-// ::: bubble-image alt="alt" src="src" webp="src.webp" width="640" height="360"
+// ::: bubble-image alt="alt" src="src" webp="src.webp" width="640" height="360" imgStyle="browser"
 // markdown
 // :::
 export const bubbleImageOptions = {
@@ -101,6 +101,7 @@ export const bubbleImageOptions = {
         width = '640',
         height = '360',
         webp = '',
+        imgStyle = 'default',
       } = attrs;
 
       const imgHtml =
@@ -118,9 +119,20 @@ export const bubbleImageOptions = {
         imageElement = imgHtml;
       }
 
+      const browserElement = `
+        <div class="browser-header">
+          <div class="controls">
+            <div class="control-btn close"></div>
+            <div class="control-btn minimize"></div>
+            <div class="control-btn maximize"></div>
+          </div>
+        </div>
+      `;
+
       return (
         `<div class="bubble-image">` +
         `<div class="bubble-image-wrapper">` +
+        `${imgStyle === 'browser' ? browserElement : ''}` +
         imageElement +
         `</div>` +
         `<div class="bubble-image-content">`
