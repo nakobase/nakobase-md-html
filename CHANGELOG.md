@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/nakobase/nakobase-md-html/compare/v2.2.0...v2.3.0) (2025-09-05)
+
+
+### Features
+
+* add imgStyle attr to bubble-image container ([11dba58](https://github.com/nakobase/nakobase-md-html/commit/11dba5822b043694bb78aecf8cd024c5a76d90fe))
+
 # [2.2.0](https://github.com/nakobase/nakobase-md-html/compare/v2.1.0...v2.2.0) (2025-07-15)
 
 
