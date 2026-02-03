@@ -106,14 +106,14 @@ $border-radius: (
 );
 
 .nbcontent {
-  // Light theme variables
+  // Light theme variables (nb- prefix to avoid conflicts with consumer CSS variables)
   @each $name, $value in $colors {
-    --#{$name}: #{map.get($value, 'light')};
+    --nb-#{$name}: #{map.get($value, 'light')};
   }
 
   // Border radius variables
   @each $name, $value in $border-radius {
-    --rounded-#{$name}: #{$value};
+    --nb-rounded-#{$name}: #{$value};
   }
 
   & > *:first-child {
@@ -121,20 +121,18 @@ $border-radius: (
   }
 
   line-height: 1.8;
-  background-color: var(--background);
-  color: var(--foreground);
 
   @include base-styles;
 }
 
 .dark .nbcontent {
-  // Dark theme variables
+  // Dark theme variables (nb- prefix to avoid conflicts with consumer CSS variables)
   @each $name, $value in $colors {
-    --#{$name}: #{map.get($value, 'dark')};
+    --nb-#{$name}: #{map.get($value, 'dark')};
   }
 
   // Border radius variables (same as light theme)
   @each $name, $value in $border-radius {
-    --rounded-#{$name}: #{$value};
+    --nb-rounded-#{$name}: #{$value};
   }
 }

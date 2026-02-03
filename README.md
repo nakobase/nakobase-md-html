@@ -38,7 +38,7 @@ This is a test of the markdown to html converter.
 console.log(html);
 ```
 
-Add `.nbcontents` to the container of the markdown.
+Add `.nbcontent` to the container of the markdown.
 
 ```html
 <div class="nbcontent">
@@ -48,22 +48,50 @@ Add `.nbcontents` to the container of the markdown.
 
 ### Styles
 
-We have some default styles that are applied to the HTML.
+We have some default styles that are applied to the HTML. All CSS variables use the `--nb-` prefix so they do not conflict with your app's design tokens (e.g. `--background`, `--primary`).
 
-#### Basic Usage (Performance Focused)
-For simple markdown content, use only the base styles:
+#### Import
+
+**Basic** (markdown only):
 
 ```ts
 import '@nakobase/nakobase-md-html/styles/base.css';
 ```
 
-#### Rich Features
-For content with custom blocks, containers, and rich features:
+**Rich** (custom blocks, containers, etc.):
 
 ```ts
 import '@nakobase/nakobase-md-html/styles/base.css';
 import '@nakobase/nakobase-md-html/styles/rich.css';
 ```
+
+#### Changing colors
+
+You can customize colors in two ways:
+
+1. **Content area (the `.nbcontent` block itself)**
+   The library does not set `background-color` or `color` on `.nbcontent`, so it inherits from its parent (e.g. your page background and text color). To give it its own look, set them directly:
+
+   ```css
+   .nbcontent {
+     background-color: #f8f8f8;
+     color: #333;
+   }
+   ```
+
+2. **Inner elements (code blocks, containers, links, etc.)**
+   Override CSS variables on `.nbcontent`. Variables are prefixed with `--nb-` (e.g. `--nb-primary`, `--nb-link`, `--nb-background` for inner boxes). See [base styles](src/styles/base.scss) for the full list.
+
+   ```css
+   .nbcontent {
+     --nb-primary: #2563eb;
+     --nb-link: #0ea5e9;
+   }
+   ```
+
+   If your overrides (e.g. in `globals.css`) don't take effect because the library CSS loads later, either **load your override CSS after the library** (e.g. import it after `base.css` / `rich.css` in the page that renders the content), or use **`!important`** (e.g. `--nb-link: #000 !important;`).
+
+You can use both: e.g. set `.nbcontent { background-color; color; }` for the content area and `--nb-*` for code blocks and containers.
 
 ### Code Highlighting
 If you want code highlighting, also import a Prism theme:

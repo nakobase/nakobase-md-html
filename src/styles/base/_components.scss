@@ -3,7 +3,7 @@
 @mixin components {
   // Horizontal Rule
   hr {
-    border-top: 2px solid var(--border);
+    border-top: 2px solid var(--nb-border);
     margin: 2.5rem 0;
   }
 
@@ -11,9 +11,9 @@
   blockquote {
     font-size: 0.97em;
     margin: 1.4rem 0;
-    border-left: solid 3px var(--border);
+    border-left: solid 3px var(--nb-border);
     padding: 2px 0 2px 0.7em;
-    color: var(--muted-foreground);
+    color: var(--nb-muted-foreground);
 
     p {
       margin: 1rem 0;
