@@ -4,7 +4,7 @@ export const CONTAINER_TYPES = {
   TOC: 'toc',
   BOX: 'box',
   BUBBLE: 'bubble',
-  BUBBLE_IMAGE: 'bubbleImage',
+  BUBBLE_IMAGE: 'bubble-image',
   DETAILS: 'details',
   HEADING: 'heading',
 } as const;
