@@ -14,29 +14,29 @@
     cursor: pointer;
     outline: 0;
     padding: 0.7em 0.7em 0.7em 0.9em;
-    border: solid 1px var(--border);
-    color: var(--primary);
+    border: solid 1px var(--nb-border);
+    color: var(--nb-primary);
     font-size: 0.9em;
-    border-radius: var(--rounded-sm);
-    background: var(--background);
+    border-radius: var(--nb-rounded-sm);
+    background: var(--nb-background);
 
     &::-webkit-details-marker {
-      color: var(--muted-foreground);
+      color: var(--nb-muted-foreground);
     }
   }
 
   details[open] > summary {
-    border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+    border-radius: var(--nb-rounded-sm) var(--nb-rounded-sm) 0 0;
     box-shadow: none;
-    background: var(--background);
+    background: var(--nb-background);
     border-bottom: none;
   }
 
   .details-content {
     padding: 0.5em 0.9em;
-    border: solid 1px var(--border);
-    border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
-    background: var(--background);
+    border: solid 1px var(--nb-border);
+    border-radius: 0 0 var(--nb-rounded-lg) var(--nb-rounded-lg);
+    background: var(--nb-background);
 
     & > * {
       margin: 0.5em 0;
@@ -56,7 +56,7 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      border: 2px solid var(--border);
+      border: 2px solid var(--nb-border);
       padding: 0.2rem;
     }
 
@@ -64,8 +64,8 @@
       position: relative;
       width: 100%;
       padding: 0.5rem 0.8rem;
-      color: var(--foreground);
-      background-color: var(--secondary);
+      color: var(--nb-foreground);
+      background-color: var(--nb-secondary);
       border-radius: 5px;
 
       p + p {
@@ -85,12 +85,12 @@
       }
 
       &::before {
-        background-color: var(--secondary);
+        background-color: var(--nb-secondary);
       }
 
       &::after {
         left: -9px;
-        background-color: var(--secondary);
+        background-color: var(--nb-secondary);
       }
     }
 
@@ -130,14 +130,14 @@
       justify-content: center;
       flex-direction: column;
       max-width: 100%;
-      border: 2px solid var(--border);
+      border: 2px solid var(--nb-border);
       border-radius: 5px;
 
       .browser-header {
         display: flex;
         align-items: center;
         padding: 0.6rem 1rem;
-        background-color: var(--secondary);
+        background-color: var(--nb-secondary);
         width: 100%;
 
         .controls {
@@ -176,8 +176,8 @@
       position: relative;
       width: 100%;
       padding: 0.5rem 0.8rem;
-      color: var(--foreground);
-      background-color: var(--secondary);
+      color: var(--nb-foreground);
+      background-color: var(--nb-secondary);
       border-radius: 5px;
 
       p + p {
@@ -194,7 +194,7 @@
         clip-path: polygon(0 50%, 100% 0, 100% 100%);
         content: '';
         transform: translateY(-50%);
-        background-color: var(--secondary);
+        background-color: var(--nb-secondary);
       }
 
       &::after {
@@ -236,8 +236,8 @@
 
     &.box1 {
       position: relative;
-      border: 1px solid var(--border);
-      border-radius: var(--rounded-sm);
+      border: 1px solid var(--nb-border);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
 
       span {
@@ -245,8 +245,8 @@
         top: 0;
         left: 1rem;
         font-size: 1.2em;
-        color: var(--foreground);
-        background-color: var(--background);
+        color: var(--nb-foreground);
+        background-color: var(--nb-background);
         padding: 0 0.5em;
         transform: translateY(-50%);
       }
@@ -254,30 +254,30 @@
 
     &.box2 {
       position: relative;
-      border-radius: var(--rounded-sm);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
-      background-color: var(--secondary);
+      background-color: var(--nb-secondary);
     }
 
     &.box3 {
       position: relative;
-      border-radius: var(--rounded-sm);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
-      background-color: var(--background);
-      border: 2px solid var(--warning-foreground);
+      background-color: var(--nb-background);
+      border: 2px solid var(--nb-warning-foreground);
 
       .msg-container {
         position: absolute;
         top: 0;
         left: 1rem;
-        background-color: var(--background);
+        background-color: var(--nb-background);
         padding: 0 0.5rem;
         transform: translateY(-50%);
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0.3rem;
-        color: var(--warning-foreground);
+        color: var(--nb-warning-foreground);
         font-weight: bold;
       }
 
@@ -286,8 +286,8 @@
         position: relative;
         width: 20px;
         height: 20px;
-        border: 2px solid var(--warning-foreground);
-        background-color: var(--warning-foreground);
+        border: 2px solid var(--nb-warning-foreground);
+        background-color: var(--nb-warning-foreground);
         border-radius: 50%;
 
         &::before,
@@ -314,23 +314,23 @@
 
     &.box4 {
       position: relative;
-      border-radius: var(--rounded-sm);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
-      background-color: var(--background);
-      border: 2px solid var(--danger-foreground);
+      background-color: var(--nb-background);
+      border: 2px solid var(--nb-danger-foreground);
 
       .msg-container {
         position: absolute;
         top: 0;
         left: 1rem;
-        background-color: var(--background);
+        background-color: var(--nb-background);
         padding: 0 0.5rem;
         transform: translateY(-50%);
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0.3rem;
-        color: var(--danger-foreground);
+        color: var(--nb-danger-foreground);
         font-weight: bold;
       }
 
@@ -339,8 +339,8 @@
         position: relative;
         width: 20px;
         height: 20px;
-        border: 2px solid var(--danger-foreground);
-        background-color: var(--danger-foreground);
+        border: 2px solid var(--nb-danger-foreground);
+        background-color: var(--nb-danger-foreground);
         border-radius: 50%;
 
         &::before,
@@ -367,12 +367,12 @@
 
     &.box5 {
       position: relative;
-      border-radius: var(--rounded-sm);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
-      background-color: var(--warning);
+      background-color: var(--nb-warning);
 
       .dark & {
-        color: var(--background);
+        color: var(--nb-background);
       }
 
       .msg-container {
@@ -380,7 +380,7 @@
         flex-direction: row;
         align-items: center;
         gap: 0.3rem;
-        color: var(--warning-foreground);
+        color: var(--nb-warning-foreground);
         font-weight: bold;
         margin-bottom: 0.5rem;
       }
@@ -390,8 +390,8 @@
         position: relative;
         width: 20px;
         height: 20px;
-        border: 2px solid var(--warning-foreground);
-        background-color: var(--warning-foreground);
+        border: 2px solid var(--nb-warning-foreground);
+        background-color: var(--nb-warning-foreground);
         border-radius: 50%;
 
         &::before,
@@ -418,12 +418,12 @@
 
     &.box6 {
       position: relative;
-      border-radius: var(--rounded-sm);
+      border-radius: var(--nb-rounded-sm);
       padding: 1rem;
-      background-color: var(--danger);
+      background-color: var(--nb-danger);
 
       .dark & {
-        color: var(--background);
+        color: var(--nb-background);
       }
 
       .msg-container {
@@ -431,7 +431,7 @@
         flex-direction: row;
         align-items: center;
         gap: 0.3rem;
-        color: var(--danger-foreground);
+        color: var(--nb-danger-foreground);
         font-weight: bold;
         margin-bottom: 0.5rem;
       }
@@ -441,8 +441,8 @@
         position: relative;
         width: 20px;
         height: 20px;
-        border: 2px solid var(--danger-foreground);
-        background-color: var(--danger-foreground);
+        border: 2px solid var(--nb-danger-foreground);
+        background-color: var(--nb-danger-foreground);
         border-radius: 50%;
 
         &::before,
@@ -496,7 +496,7 @@
         left: 0;
         width: 17px;
         height: 28px;
-        color: var(--primary);
+        color: var(--nb-primary);
         background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221.25em%22%20viewBox%3D%220%200%20448%20512%22%3E%3Cstyle%3Esvg%7Bfill%3A%235ab9ff%7D%3C%2Fstyle%3E%3Cpath%20d%3D%22M438.6%20105.4c12.5%2012.5%2012.5%2032.8%200%2045.3l-256%20256c-12.5%2012.5-32.8%2012.5-45.3%200l-128-128c-12.5-12.5-12.5-32.8%200-45.3s32.8-12.5%2045.3%200L160%20338.7%20393.4%20105.4c12.5-12.5%2032.8-12.5%2045.3%200z%22%2F%3E%3C%2Fsvg%3E);
         background-position: 50%;
         background-repeat: no-repeat;
