@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write
 jobs:
   release:
     name: Release
@@ -18,8 +20,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
+          node-version: "lts/*"
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
       - name: Build
