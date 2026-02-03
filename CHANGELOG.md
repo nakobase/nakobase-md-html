@@ -4,6 +4,16 @@
 ### Bug Fixes
 
 * update BUBBLE_IMAGE constant to use kebab-case and add 'rel' attribute to anchor tags ([7367228](https://github.com/nakobase/nakobase-md-html/commit/73672288193bcb50ef92541e9b2b65b70d276239))
+* update GitHub Actions workflow to add id-token permission ([60664fb](https://github.com/nakobase/nakobase-md-html/commit/60664fb1bc5151029aa3d0adc8493ec45228b212))
+* update GitHub Actions workflow to grant additional permissions ([c1e8044](https://github.com/nakobase/nakobase-md-html/commit/c1e8044a71549fad6a0576a7d748a5957f03965f))
+* update README and styles to use `--nb-` prefix for CSS variables ([44f3a93](https://github.com/nakobase/nakobase-md-html/commit/44f3a931709a36f497f9d09a2d7fb8c1b39689a9))
+
+## [2.3.1](https://github.com/nakobase/nakobase-md-html/compare/v2.3.0...v2.3.1) (2026-02-03)
+
+
+### Bug Fixes
+
+* update BUBBLE_IMAGE constant to use kebab-case and add 'rel' attribute to anchor tags ([7367228](https://github.com/nakobase/nakobase-md-html/commit/73672288193bcb50ef92541e9b2b65b70d276239))
 * update README and styles to use `--nb-` prefix for CSS variables ([44f3a93](https://github.com/nakobase/nakobase-md-html/commit/44f3a931709a36f497f9d09a2d7fb8c1b39689a9))
 
 # [2.3.0](https://github.com/nakobase/nakobase-md-html/compare/v2.2.0...v2.3.0) (2025-09-05)
