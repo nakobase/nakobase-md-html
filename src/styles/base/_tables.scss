@@ -15,11 +15,11 @@
   th,
   td {
     padding: 0.6rem;
-    border: solid 1px var(--border);
-    background: var(--background);
+    border: solid 1px var(--nb-border);
+    background: var(--nb-background);
   }
   th {
     font-weight: 700;
-    background: var(--secondary);
+    background: var(--nb-secondary);
   }
 }
