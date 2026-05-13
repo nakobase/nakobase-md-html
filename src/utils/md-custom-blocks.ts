@@ -8,14 +8,53 @@ type Block = {
   renderer: (attrs: Record<string, string>) => string;
 };
 
+const attrRe = /([a-zA-Z0-9-_]+)="([^"]*)"/g;
+
 function escapeRegExp(string: string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function parseAttrs(rawAttrs: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  let mat: RegExpExecArray | null;
+  attrRe.lastIndex = 0;
+  while ((mat = attrRe.exec(rawAttrs))) {
+    attrs[mat[1]] = mat[2];
+  }
+  return attrs;
+}
+
+function hasRequiredAttrs(
+  attrs: Record<string, string>,
+  requiredKeys: string[]
+): boolean {
+  return requiredKeys.every((key) => attrs[key]);
+}
+
+function renderLinkExternal({
+  url,
+  text,
+  target = '_blank',
+  rel,
+  icon = 'true',
+}: Record<string, string>): string {
+  const label = text || url;
+  const relValues = new Set((rel || '').split(/\s+/).filter(Boolean));
+  if (target === '_blank') {
+    relValues.add('noopener');
+    relValues.add('noreferrer');
+  }
+  const linkRel = [...relValues].join(' ');
+  const className =
+    icon === 'false' ? 'external-link external-link-no-icon' : 'external-link';
+  const relAttr = linkRel ? ` rel="${escapeHtml(linkRel)}"` : '';
+
+  return `<a href="${escapeHtml(url)}" target="${escapeHtml(target)}"${relAttr} class="${className}">${escapeHtml(label)}</a>`;
 }
 
 function registerKVBlock(md: MarkdownIt, block: Block) {
   const escapedMarker = escapeRegExp(block.marker);
   const blockRe = new RegExp(`^@\\[${escapedMarker}\\]\\(([^)]*)\\)$`);
-  const attrRe = /([a-zA-Z0-9-_]+)="([^"]*)"/g;
 
   md.block.ruler.before(
     'paragraph',
@@ -28,17 +67,9 @@ function registerKVBlock(md: MarkdownIt, block: Block) {
       if (!m) return false;
       if (silent) return true;
 
-      const attrs: Record<string, string> = {};
-      let mat: RegExpExecArray | null;
-      while ((mat = attrRe.exec(m[1]))) {
-        attrs[mat[1]] = mat[2];
-      }
+      const attrs = parseAttrs(m[1]);
 
-      for (const key of block.requiredKeys) {
-        if (!attrs[key]) {
-          return false;
-        }
-      }
+      if (!hasRequiredAttrs(attrs, block.requiredKeys)) return false;
 
       const token = state.push(block.name, '', 0);
       token.meta = attrs;
@@ -46,6 +77,36 @@ function registerKVBlock(md: MarkdownIt, block: Block) {
       return true;
     }
   );
+
+  md.renderer.rules[block.name] = (tokens, idx) => {
+    return block.renderer(tokens[idx].meta as Record<string, string>);
+  };
+}
+
+function registerKVInline(md: MarkdownIt, block: Block) {
+  const marker = `@[${block.marker}](`;
+
+  md.inline.ruler.before('link', block.name, (state, silent) => {
+    const start = state.pos;
+
+    if (state.src.slice(start, start + marker.length) !== marker) {
+      return false;
+    }
+
+    const end = state.src.indexOf(')', start + marker.length);
+    if (end < 0) return false;
+
+    const attrs = parseAttrs(state.src.slice(start + marker.length, end));
+    if (!hasRequiredAttrs(attrs, block.requiredKeys)) return false;
+
+    if (!silent) {
+      const token = state.push(block.name, '', 0);
+      token.meta = attrs;
+    }
+
+    state.pos = end + 1;
+    return true;
+  });
 
   md.renderer.rules[block.name] = (tokens, idx) => {
     return block.renderer(tokens[idx].meta as Record<string, string>);
@@ -77,15 +138,12 @@ export function mdCustomBlocks(md: MarkdownIt) {
   });
 
   // @[link-external](url="", text="")
-  registerKVBlock(md, {
+  const linkExternal = {
     name: 'link_external',
     marker: 'link-external',
     requiredKeys: ['url'],
-    renderer: ({ url, text }) => {
-      const label = text || url;
-      return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="external-link">
-        ${escapeHtml(label)}
-      </a>`;
-    },
-  });
+    renderer: renderLinkExternal,
+  };
+  registerKVBlock(md, linkExternal);
+  registerKVInline(md, linkExternal);
 }
