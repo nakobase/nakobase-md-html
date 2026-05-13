@@ -466,6 +466,46 @@
         }
       }
     }
+
+    &.box7 {
+      background: var(--nb-info);
+
+      .dark & {
+        color: var(--nb-background);
+      }
+
+      .box-title {
+        font-size: 1.2em;
+        background: var(--nb-info-foreground);
+        padding: 0.25rem;
+        text-align: center;
+        color: var(--nb-primary-foreground);
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+
+      > :not(.box-title) {
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+      }
+
+      > p {
+        margin: 0;
+      }
+
+      > p + p {
+        margin-top: 0.4em;
+      }
+
+      > :first-child:not(.box-title),
+      > .box-title + * {
+        padding-top: 0.9375rem;
+      }
+
+      > :last-child {
+        padding-bottom: 0.9375rem;
+      }
+    }
   }
 
   // Heading
