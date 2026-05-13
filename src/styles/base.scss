@@ -42,6 +42,10 @@ $colors: (
     'light': oklch(0.21 0.006 285.885),
     'dark': oklch(0.985 0 0),
   ),
+  'code': (
+    'light': oklch(0.9388 0.01 247.91),
+    'dark': oklch(0.34 0.006 286.033),
+  ),
   'muted': (
     'light': oklch(0.967 0.001 286.375),
     'dark': oklch(0.274 0.006 286.033),
@@ -77,6 +81,14 @@ $colors: (
   'link': (
     'light': oklch(0.623 0.214 259.815),
     'dark': oklch(0.623 0.214 259.815),
+  ),
+  'info': (
+    'light': oklch(0.972 0.012 244),
+    'dark': oklch(0.972 0.012 244),
+  ),
+  'info-foreground': (
+    'light': oklch(0.7156 0.1161 221.975),
+    'dark': oklch(0.7156 0.1161 221.975),
   ),
   'warning': (
     'light': oklch(0.9754 0.025552 84.593),

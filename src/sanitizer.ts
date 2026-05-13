@@ -16,11 +16,20 @@ const extendedTags = [
 ];
 
 const extendedAttributes = {
-  a: [...(defaults.allowedAttributes.a || []), 'id', 'class', 'data-line', 'rel'],
+  a: [
+    ...(defaults.allowedAttributes.a || []),
+    'id',
+    'class',
+    'data-line',
+    'rel',
+    'target',
+  ],
   iframe: ['src', 'width', 'height', 'allow', 'sandbox', 'frameborder'],
   input: ['type', 'checked', 'disabled', 'readonly', 'value', 'class'],
   source: ['srcset', 'type'],
+  picture: ['class'],
   img: ['src', 'alt', 'width', 'height'],
+  em: ['class'],
   ul: ['class'],
   ol: ['class'],
   li: ['class'],
