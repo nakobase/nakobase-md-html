@@ -25,7 +25,7 @@ export const detailsOptions = {
 };
 
 // Bubble
-// ::: bubble alt="alt" src="src" webp="src.webp" width="100" height="100" pos="left"
+// ::: bubble alt="alt" src="src" webp="src.webp" width="100" height="100" pos="left" name="name"
 // markdown
 // :::
 export const bubbleOptions = {
@@ -49,6 +49,7 @@ export const bubbleOptions = {
         height = '80',
         pos = 'left',
         webp = '',
+        name = '',
       } = attrs;
 
       const imgHtml =
@@ -68,7 +69,10 @@ export const bubbleOptions = {
 
       return (
         `<div class="bubble ${pos}">` +
+        `<div class="bubble-avatar">` +
         imageElement +
+        `${name ? `<span class="bubble-name">${escapeHtml(name)}</span>` : ''}` +
+        `</div>` +
         `<div class="bubble-content">`
       );
     } else {
