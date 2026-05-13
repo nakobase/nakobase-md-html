@@ -25,7 +25,7 @@ export const detailsOptions = {
 };
 
 // Bubble
-// ::: bubble alt="alt" src="src" webp="src.webp" width="100" height="100" pos="left"
+// ::: bubble alt="alt" src="src" webp="src.webp" width="100" height="100" pos="left" name="name"
 // markdown
 // :::
 export const bubbleOptions = {
@@ -49,6 +49,7 @@ export const bubbleOptions = {
         height = '80',
         pos = 'left',
         webp = '',
+        name = '',
       } = attrs;
 
       const imgHtml =
@@ -68,7 +69,10 @@ export const bubbleOptions = {
 
       return (
         `<div class="bubble ${pos}">` +
+        `<div class="bubble-avatar">` +
         imageElement +
+        `${name ? `<span class="bubble-name">${escapeHtml(name)}</span>` : ''}` +
+        `</div>` +
         `<div class="bubble-content">`
       );
     } else {
@@ -150,13 +154,13 @@ export const bubbleImageOptions = {
 //
 export const boxOptions = {
   validate: function (params: string) {
-    return /^(box[1-6])(?:\s+(.*))?$/.test(params.trim());
+    return /^(box[1-7])(?:\s+(.*))?$/.test(params.trim());
   },
   render: function (tokens: Token[], idx: number) {
     const isOpeningTag = tokens[idx].nesting === 1;
 
     if (isOpeningTag) {
-      const m = tokens[idx].info.trim().match(/^(box[1-6])(?:\s+(.*))?$/);
+      const m = tokens[idx].info.trim().match(/^(box[1-7])(?:\s+(.*))?$/);
       if (!m) return '';
 
       const boxType = m[1]; // box1, box2, etc.
@@ -183,6 +187,8 @@ const boxHtml = (boxType: string, boxTitle: string) => {
       return `<div class="box ${boxType}"><div class="msg-container"><span class="icon"></span>${
         boxTitle ? `<span>${boxTitle}</span>` : ''
       }</div>`;
+    case 'box7':
+      return `<div class="box ${boxType}">${boxTitle ? `<div class="box-title">${boxTitle}</div>` : ''}`;
     default:
       return `<div class="box ${boxType}">${boxTitle ? `<span>${boxTitle}</span>` : ''}`;
   }

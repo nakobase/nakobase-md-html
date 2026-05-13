@@ -1,11 +1,15 @@
 import MarkdownIt from 'markdown-it';
-import { escapeHtml } from 'markdown-it/lib/common/utils';
 
 type Inline = {
   name: string;
   marker: string;
-  renderer: (content: string, meta?: Record<string, any>) => string;
+  parseContent?: (content: string) => {
+    className: string;
+    textStartOffset: number;
+  };
 };
+
+const HIGHLIGHT_COLORS = new Set(['red', 'green', 'blue']);
 
 function registerInline(md: MarkdownIt, inline: Inline) {
   const inlineRule = (state: any, silent: boolean) => {
@@ -18,8 +22,6 @@ function registerInline(md: MarkdownIt, inline: Inline) {
     ) {
       return false;
     }
-
-    if (silent) return true;
 
     let end = start + inline.marker.length;
     while (end < max) {
@@ -34,20 +36,31 @@ function registerInline(md: MarkdownIt, inline: Inline) {
     }
 
     const content = state.src.slice(start + inline.marker.length, end);
+    const parsed = inline.parseContent
+      ? inline.parseContent(content)
+      : { className: inline.name, textStartOffset: 0 };
 
-    const token = state.push(inline.name, '', 0);
-    token.content = content;
-    token.markup = inline.marker;
+    if (silent) return true;
+
+    const oldPosMax = state.posMax;
+
+    const tokenOpen = state.push(`${inline.name}_open`, 'span', 1);
+    tokenOpen.markup = inline.marker;
+    tokenOpen.attrSet('class', parsed.className);
+
+    state.pos = start + inline.marker.length + parsed.textStartOffset;
+    state.posMax = end;
+    state.md.inline.tokenize(state);
+
+    const tokenClose = state.push(`${inline.name}_close`, 'span', -1);
+    tokenClose.markup = inline.marker;
 
     state.pos = end + inline.marker.length;
+    state.posMax = oldPosMax;
     return true;
   };
 
   md.inline.ruler.before('emphasis', inline.name, inlineRule);
-
-  md.renderer.rules[inline.name] = (tokens, idx) => {
-    return inline.renderer(tokens[idx].content, tokens[idx].meta);
-  };
 }
 
 export function mdCustomInlines(md: MarkdownIt) {
@@ -55,13 +68,20 @@ export function mdCustomInlines(md: MarkdownIt) {
   registerInline(md, {
     name: 'highlight',
     marker: '==',
-    renderer: (content) => {
+    parseContent: (content) => {
       const colorMatch = content.match(/^([a-zA-Z]+):(.+)$/);
-      const color = colorMatch ? colorMatch[1] : 'default';
-      const text = colorMatch ? colorMatch[2] : content;
-      const className =
-        color === 'default' ? 'highlight' : `highlight highlight-${color}`;
-      return `<span class="${className}">${escapeHtml(text)}</span>`;
+      const color =
+        colorMatch && HIGHLIGHT_COLORS.has(colorMatch[1])
+          ? colorMatch[1]
+          : 'default';
+      const hasValidColor = color !== 'default';
+
+      return {
+        className: hasValidColor
+          ? `highlight highlight-${color}`
+          : 'highlight',
+        textStartOffset: hasValidColor ? colorMatch![1].length + 1 : 0,
+      };
     },
   });
 }
