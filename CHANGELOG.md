@@ -1,3 +1,20 @@
+# [2.4.0](https://github.com/nakobase/nakobase-md-html/compare/v2.3.1...v2.4.0) (2026-05-13)
+
+
+### Bug Fixes
+
+* standardize margin spacing across code, blockquote, custom containers, and tables ([4daf243](https://github.com/nakobase/nakobase-md-html/commit/4daf243a6a1afbefc52571da448d038f9e6e60a2))
+
+
+### Features
+
+* add a name to bubble ([7a2349c](https://github.com/nakobase/nakobase-md-html/commit/7a2349ca3bfa07196429f7239e5fe359492e7903))
+* add box7 ([e5d8882](https://github.com/nakobase/nakobase-md-html/commit/e5d8882fec04fef5041a6cc236ab06255c1ef9ac))
+* add custom image block styling and enhance caption handling in Markdown ([6225b74](https://github.com/nakobase/nakobase-md-html/commit/6225b747d366f9abab2c12006ad3155a069534ac))
+* enhance inline parsing for custom Markdown highlights ([0c8f888](https://github.com/nakobase/nakobase-md-html/commit/0c8f8880e3e6ac61f44cb31da4c1f6e4449d0d0e))
+* enhance sanitizer and Markdown custom blocks with new attributes and link rendering ([fc977d8](https://github.com/nakobase/nakobase-md-html/commit/fc977d8d5d977d9d44797f52c52ab3e2a52fc1d0))
+* nb-code color ([8724c7d](https://github.com/nakobase/nakobase-md-html/commit/8724c7d37247b41277b5e426f595d1280bad28f0))
+
 ## [2.3.1](https://github.com/nakobase/nakobase-md-html/compare/v2.3.0...v2.3.1) (2026-02-03)
 
 
