@@ -29,7 +29,7 @@ $code-block-filename-color: var(--nb-primary-foreground);
   // Code container
   .code-container {
     position: relative;
-    margin: 1.3rem 0;
+    margin: 1.5rem 0;
   }
 
   // Code filename
@@ -52,7 +52,7 @@ $code-block-filename-color: var(--nb-primary-foreground);
 
   // Pre element styles
   pre {
-    margin: 1.3rem 0;
+    margin: 1.5rem 0;
     background: var(--nb-primary);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
