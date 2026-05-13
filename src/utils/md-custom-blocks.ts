@@ -65,8 +65,10 @@ export function mdCustomBlocks(md: MarkdownIt) {
       const altText = alt ? `alt="${escapeHtml(alt)}"` : '';
       const widthAttr = width ? ` width="${escapeHtml(width)}"` : '';
       const heightAttr = height ? ` height="${escapeHtml(height)}"` : '';
-      const captionText = caption ? `<em>${escapeHtml(caption)}</em>` : '';
-      return `<picture>
+      const captionText = caption
+        ? `<em class="custom-image-caption">${escapeHtml(caption)}</em>`
+        : '';
+      return `<picture class="custom-image">
         ${webpSource}
         <img src="${escapeHtml(src)}" ${altText}${widthAttr}${heightAttr}>
         ${captionText}
