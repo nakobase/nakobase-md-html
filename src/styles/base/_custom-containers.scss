@@ -96,7 +96,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0.5rem 0.8rem;
+      padding: 0.8rem;
       color: var(--nb-foreground);
       background-color: var(--nb-secondary);
       border-radius: 5px;
@@ -111,6 +111,15 @@
 
       p + p {
         margin-top: 0.4em;
+      }
+
+      ul,
+      ol {
+        margin: 0.6rem 0;
+      }
+
+      li {
+        margin: 0.2rem 0;
       }
 
       &::before,
@@ -216,13 +225,22 @@
       flex-basis: 60%;
       position: relative;
       width: 100%;
-      padding: 0.5rem 0.8rem;
+      padding: 0.8rem;
       color: var(--nb-foreground);
       background-color: var(--nb-secondary);
       border-radius: 5px;
 
       p + p {
         margin-top: 0.4em;
+      }
+
+      ul,
+      ol {
+        margin: 0.6rem 0;
+      }
+
+      li {
+        margin: 0.2rem 0;
       }
 
       &::before,
@@ -269,17 +287,26 @@
   // contents
   // :::
   .box {
-    margin: 1.5rem 0;
+    margin: 1.8rem 0;
 
     p + p {
       margin-top: 0.4em;
+    }
+
+    ul,
+    ol {
+      margin: 0.6rem 0;
+    }
+
+    li {
+      margin: 0.2rem 0;
     }
 
     &.box1 {
       position: relative;
       border: 1px solid var(--nb-border);
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
 
       span {
         position: absolute;
@@ -296,14 +323,14 @@
     &.box2 {
       position: relative;
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: var(--nb-secondary);
     }
 
     &.box3 {
       position: relative;
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: var(--nb-background);
       border: 2px solid var(--nb-warning-foreground);
 
@@ -356,7 +383,7 @@
     &.box4 {
       position: relative;
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: var(--nb-background);
       border: 2px solid var(--nb-danger-foreground);
 
@@ -409,7 +436,7 @@
     &.box5 {
       position: relative;
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: var(--nb-warning);
 
       .dark & {
@@ -460,7 +487,7 @@
     &.box6 {
       position: relative;
       border-radius: var(--nb-rounded-sm);
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: var(--nb-danger);
 
       .dark & {
@@ -540,11 +567,11 @@
 
       > :first-child:not(.box-title),
       > .box-title + * {
-        padding-top: 0.9375rem;
+        padding-top: 1.2rem;
       }
 
       > :last-child {
-        padding-bottom: 0.9375rem;
+        padding-bottom: 1.2rem;
       }
     }
   }
