@@ -1,6 +1,18 @@
 import { escapeHtml } from 'markdown-it/lib/common/utils';
 import type Token from 'markdown-it/lib/token';
 
+const LAYOUT_GAPS = new Set(['sm', 'md', 'lg']);
+
+const parseAttrs = (info: string): Record<string, string> => {
+  const regex = /(\w+)="([^"]*)"/g;
+  const attrs: Record<string, string> = {};
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(info)) !== null) {
+    attrs[m[1]] = m[2];
+  }
+  return attrs;
+};
+
 // ::: details Detail
 //   summary here
 // :::
@@ -20,6 +32,50 @@ export const detailsOptions = {
       );
     } else {
       return '</div></details>\n';
+    }
+  },
+};
+
+// Group
+// ::: group gap="md"
+// markdown
+// :::
+export const groupOptions = {
+  validate: function (params: string) {
+    return /^group(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
+  },
+  render: function (tokens: Token[], idx: number) {
+    const isOpeningTag = tokens[idx].nesting === 1;
+    if (isOpeningTag) {
+      const info = tokens[idx].info.trim().replace(/^group\s*/, '');
+      const attrs = parseAttrs(info);
+      const gap = LAYOUT_GAPS.has(attrs.gap) ? attrs.gap : 'md';
+
+      return `<div class="custom-group custom-group-gap-${escapeHtml(gap)}">`;
+    } else {
+      return `</div>\n`;
+    }
+  },
+};
+
+// Stack
+// ::: stack gap="md"
+// markdown
+// :::
+export const stackOptions = {
+  validate: function (params: string) {
+    return /^stack(?:\s+\w+="[^"]*")*\s*$/.test(params.trim());
+  },
+  render: function (tokens: Token[], idx: number) {
+    const isOpeningTag = tokens[idx].nesting === 1;
+    if (isOpeningTag) {
+      const info = tokens[idx].info.trim().replace(/^stack\s*/, '');
+      const attrs = parseAttrs(info);
+      const gap = LAYOUT_GAPS.has(attrs.gap) ? attrs.gap : 'md';
+
+      return `<div class="custom-stack custom-stack-gap-${escapeHtml(gap)}">`;
+    } else {
+      return `</div>\n`;
     }
   },
 };

@@ -36,7 +36,7 @@ const extendedAttributes = {
   div: ['class'],
   pre: ['class'],
   code: [...(defaults.allowedAttributes.code || []), 'class', 'data-line'],
-  span: ['class'],
+  span: ['class', 'aria-hidden'],
   h1: ['id'],
   h2: ['id'],
   h3: ['id'],
