@@ -1,3 +1,11 @@
+# [2.5.0](https://github.com/nakobase/nakobase-md-html/compare/v2.4.0...v2.5.0) (2026-05-18)
+
+
+### Features
+
+* add custom button styles and enhance button rendering in Markdown ([81ad944](https://github.com/nakobase/nakobase-md-html/commit/81ad94446d1a49540e2baf560b8a414186ef6989))
+* add group and stack container options with corresponding styles ([17f6c0e](https://github.com/nakobase/nakobase-md-html/commit/17f6c0ed486d4d9e45d48e3b7be7c5d5cad0e8e4))
+
 # [2.4.0](https://github.com/nakobase/nakobase-md-html/compare/v2.3.1...v2.4.0) (2026-05-13)
 
 
