@@ -6,5 +6,7 @@ export const CONTAINER_TYPES = {
   BUBBLE: 'bubble',
   BUBBLE_IMAGE: 'bubble-image',
   DETAILS: 'details',
+  GROUP: 'group',
   HEADING: 'heading',
+  STACK: 'stack',
 } as const;

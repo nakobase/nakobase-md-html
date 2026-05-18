@@ -9,6 +9,24 @@ type Block = {
 };
 
 const attrRe = /([a-zA-Z0-9-_]+)="([^"]*)"/g;
+const BUTTON_VARIANTS = new Set([
+  'primary',
+  'secondary',
+  'amazon',
+  'rakuten',
+  'kindle',
+  'yahoo',
+]);
+const BUTTON_APPEARANCES = new Set(['solid', 'outline', 'ghost']);
+const BUTTON_SIZES = new Set(['sm', 'md', 'lg']);
+const BUTTON_ICONS = new Set([
+  'amazon',
+  'rakuten',
+  'kindle',
+  'yahoo',
+  'check',
+  'external',
+]);
 
 function escapeRegExp(string: string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -50,6 +68,49 @@ function renderLinkExternal({
   const relAttr = linkRel ? ` rel="${escapeHtml(linkRel)}"` : '';
 
   return `<a href="${escapeHtml(url)}" target="${escapeHtml(target)}"${relAttr} class="${className}">${escapeHtml(label)}</a>`;
+}
+
+function getAllowedValue(
+  value: string | undefined,
+  allowedValues: Set<string>,
+  fallback: string
+): string {
+  return value && allowedValues.has(value) ? value : fallback;
+}
+
+function renderButton({
+  url,
+  text,
+  variant,
+  appearance,
+  size,
+  icon,
+  target = '_blank',
+  rel,
+}: Record<string, string>): string {
+  const label = text || url;
+  const buttonVariant = getAllowedValue(variant, BUTTON_VARIANTS, 'primary');
+  const buttonAppearance = getAllowedValue(
+    appearance,
+    BUTTON_APPEARANCES,
+    'solid'
+  );
+  const buttonSize = getAllowedValue(size, BUTTON_SIZES, 'md');
+  const buttonIcon = icon && BUTTON_ICONS.has(icon) ? icon : '';
+  const relValues = new Set((rel || '').split(/\s+/).filter(Boolean));
+
+  if (target === '_blank') {
+    relValues.add('noopener');
+    relValues.add('noreferrer');
+  }
+
+  const linkRel = [...relValues].join(' ');
+  const relAttr = linkRel ? ` rel="${escapeHtml(linkRel)}"` : '';
+  const iconHtml = buttonIcon
+    ? `<span class="custom-button-icon custom-button-icon-${buttonIcon}" aria-hidden="true"></span>`
+    : '';
+
+  return `<a href="${escapeHtml(url)}" target="${escapeHtml(target)}"${relAttr} class="custom-button custom-button-${buttonVariant} custom-button-${buttonAppearance} custom-button-${buttonSize}">${iconHtml}<span class="custom-button-text">${escapeHtml(label)}</span></a>`;
 }
 
 function registerKVBlock(md: MarkdownIt, block: Block) {
@@ -146,4 +207,14 @@ export function mdCustomBlocks(md: MarkdownIt) {
   };
   registerKVBlock(md, linkExternal);
   registerKVInline(md, linkExternal);
+
+  // @[button](url="", text="", variant="", appearance="", size="", icon="")
+  const button = {
+    name: 'button',
+    marker: 'button',
+    requiredKeys: ['url'],
+    renderer: renderButton,
+  };
+  registerKVBlock(md, button);
+  registerKVInline(md, button);
 }
