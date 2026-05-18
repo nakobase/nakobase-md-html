@@ -43,6 +43,60 @@
     }
   }
 
+  // ::: group
+  // markdown
+  // :::
+  .custom-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 1.2rem 0;
+
+    > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &.custom-group-gap-sm {
+      gap: 0.5rem;
+    }
+
+    &.custom-group-gap-md {
+      gap: 0.8rem;
+    }
+
+    &.custom-group-gap-lg {
+      gap: 1.2rem;
+    }
+  }
+
+  // ::: stack
+  // markdown
+  // :::
+  .custom-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.2rem 0;
+
+    > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &.custom-stack-gap-sm {
+      gap: 0.5rem;
+    }
+
+    &.custom-stack-gap-md {
+      gap: 0.8rem;
+    }
+
+    &.custom-stack-gap-lg {
+      gap: 1.2rem;
+    }
+  }
+
   // ::: bubble
   // markdown
   // :::

@@ -7,7 +7,9 @@ import {
   bubbleImageOptions,
   bubbleOptions,
   detailsOptions,
+  groupOptions,
   headingOptions,
+  stackOptions,
 } from './utils/md-container';
 import { mdRendererFence } from './utils/md-renderer-fence';
 import { mdCustomBlocks } from './utils/md-custom-blocks';
@@ -55,7 +57,9 @@ export const mdToHtml = (
       .use(MdItContainer, CONTAINER_TYPES.BOX, boxOptions)
       .use(MdItContainer, CONTAINER_TYPES.BUBBLE, bubbleOptions)
       .use(MdItContainer, CONTAINER_TYPES.BUBBLE_IMAGE, bubbleImageOptions)
+      .use(MdItContainer, CONTAINER_TYPES.GROUP, groupOptions)
       .use(MdItContainer, CONTAINER_TYPES.HEADING, headingOptions)
+      .use(MdItContainer, CONTAINER_TYPES.STACK, stackOptions)
       .use(mdCustomBlocks)
       .use(mdCustomInlines);
   }
