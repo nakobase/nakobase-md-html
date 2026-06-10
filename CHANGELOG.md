@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/nakobase/nakobase-md-html/compare/v2.5.0...v2.5.1) (2026-06-10)
+
+
+### Bug Fixes
+
+* update link styles to improve overflow handling ([41fa836](https://github.com/nakobase/nakobase-md-html/commit/41fa836aac01137307b413b5107a4ab6e6324259))
+
 # [2.5.0](https://github.com/nakobase/nakobase-md-html/compare/v2.4.0...v2.5.0) (2026-05-18)
 
 
