@@ -50,6 +50,8 @@ $font-sizes: (
 
   a {
     color: var(--nb-link);
+    overflow-wrap: anywhere;
+
     &:hover {
       text-decoration: underline;
     }
